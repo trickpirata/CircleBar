@@ -15,6 +15,11 @@ import UIKit
             self.previousIndex = index
         }
     }
+    @IBInspectable var fillColor: UIColor = .white {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
     private var animated = false
     private var selectedImage: UIImage?
     private var previousIndex: CGFloat = 0
@@ -29,16 +34,16 @@ import UIKit
         
     }
     override open func draw(_ rect: CGRect) {
-        let fillColor: UIColor = .white
+        let _fillColor: UIColor = fillColor
         tabWidth = self.bounds.width / CGFloat(self.items!.count)
         let bezPath = drawPath(for: index)
         
         bezPath.close()
-        fillColor.setFill()
+        _fillColor.setFill()
         bezPath.fill()
         let mask = CAShapeLayer()
         mask.fillRule = .evenOdd
-        mask.fillColor = UIColor.white.cgColor
+        mask.fillColor = _fillColor.cgColor
         mask.path = bezPath.cgPath
         if (self.animated) {
             let bezAnimation = CABasicAnimation(keyPath: "path")
@@ -66,6 +71,7 @@ import UIKit
         self.barTintColor = .white
         self.backgroundColor = .white
     }
+    
     private func drawPath(for index: CGFloat) -> UIBezierPath {
         let bezPath = UIBezierPath()
 

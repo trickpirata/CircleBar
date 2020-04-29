@@ -11,8 +11,13 @@ import UIKit
 open class SHCircleBarController: UITabBarController {
 
     fileprivate var shouldSelectOnTabBar = true
-    private var circleView : UIView!
-    private var circleImageView: UIImageView!
+    public var circleColor: UIColor = .white {
+        didSet {
+            self.circleView.backgroundColor = circleColor
+        }
+    }
+    public var circleView : UIView!
+    public var circleImageView: UIImageView!
     open override var selectedViewController: UIViewController? {
         willSet {
             guard shouldSelectOnTabBar, let newValue = newValue else {
@@ -44,7 +49,7 @@ open class SHCircleBarController: UITabBarController {
         
         self.circleView = UIView(frame: .zero)
         circleView.layer.cornerRadius = 30
-        circleView.backgroundColor = .white
+        circleView.backgroundColor = circleColor
         circleView.isUserInteractionEnabled = false
         
         self.circleImageView = UIImageView(frame: .zero)
