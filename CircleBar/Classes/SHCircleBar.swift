@@ -15,7 +15,7 @@ import UIKit
             self.previousIndex = index
         }
     }
-    @IBInspectable var fillColor: UIColor = .white {
+    @IBInspectable public var fillColor: UIColor = .white {
         didSet {
             setNeedsDisplay()
         }
@@ -33,6 +33,7 @@ import UIKit
         customInit()
         
     }
+    
     override open func draw(_ rect: CGRect) {
         let _fillColor: UIColor = fillColor
         tabWidth = self.bounds.width / CGFloat(self.items!.count)
