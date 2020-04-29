@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SHCircleBarController: UITabBarController {
+public class SHCircleBarController: UITabBarController {
 
     fileprivate var shouldSelectOnTabBar = true
     private var circleView : UIView!

@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable class SHCircleBar: UITabBar {
+@IBDesignable public class SHCircleBar: UITabBar {
     var tabWidth: CGFloat = 0
     var index: CGFloat = 0 {
         willSet{
@@ -28,7 +28,7 @@ import UIKit
         customInit()
         
     }
-    override func draw(_ rect: CGRect) {
+    override public func draw(_ rect: CGRect) {
         let fillColor: UIColor = .white
         tabWidth = self.bounds.width / CGFloat(self.items!.count)
         let bezPath = drawPath(for: index)
