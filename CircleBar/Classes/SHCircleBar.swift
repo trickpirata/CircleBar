@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable public class SHCircleBar: UITabBar {
+@IBDesignable open class SHCircleBar: UITabBar {
     var tabWidth: CGFloat = 0
     var index: CGFloat = 0 {
         willSet{
@@ -23,12 +23,12 @@ import UIKit
         customInit()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         customInit()
         
     }
-    override public func draw(_ rect: CGRect) {
+    override open func draw(_ rect: CGRect) {
         let fillColor: UIColor = .white
         tabWidth = self.bounds.width / CGFloat(self.items!.count)
         let bezPath = drawPath(for: index)
